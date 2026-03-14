@@ -1,52 +1,94 @@
-# optimization-methods
-Laboratory works for the Optimization Methods course
-# Lab 1: Choice Method
+# Optimization Methods
 
-Այս ռեպոզիտորիան պարունակում է լաբորատոր աշխատանքը «Ընտրանքների եղանակ» թեմայով։
+This repository contains implementations and explanations of several **optimization methods** used to find the **minimum or maximum of functions**.
 
-## Տեսական Նյութ
+---
 
-**Ընտրանքների եղանակը (Choice Method)** օգտագործվում է ֆունկցիաների համար այնպիսի կետ գտնելու համար, որտեղ ֆունկցիան ունենում է առավելագույն կամ նվազագույն արժեքներ (min/max) կամ որոշակի հատկություններ։  
+# Choice Method
 
-- Այս մեթոդը օգտակար է այն ժամանակ, երբ ֆունկցիան հայտնի է անալիտիկ ձևով, և մենք ուզում ենք փորձարկել որոշ կետեր՝ արժեքը գնահատելու համար։  
-- Քննարկվում են ֆունկցիայի արժեքները նշված միջակայքում `[a, b]` որոշակի քայլով `e`։  
-- Ավելորդ հաշվարկները չեն իրականացվում, և դա օգնում է արագ գտնել մոտավոր արժեքներ կամ գրաֆիկական պատկերացում ստանալ ֆունկցիայի փոփոխությունների մասին։
+## Theoretical Background
 
-## Ֆայլերը
+The **Choice Method** is used to analyze a function and find approximate points where the function may reach **minimum or maximum values (min/max)**.
 
-- `choice.py` – Python կոդը, որը հաշվարկում է ֆունկցիայի արժեքները և ցույց է տալիս գրաֆիկը։  
-- `README.md` – նախագծի նկարագրությունը։
+* This method is useful when the function is known in **analytical form**.
+* The function is evaluated at several points in the interval `[a, b]` with a step `e`.
+* By checking these values, we can estimate where the function increases or decreases.
+* This approach helps obtain **approximate solutions** and visualize the behavior of the function.
 
-## Կոդի նկարագրություն
+## Files
 
-Կոդը կատարում է հետևյալ գործողությունները՝
+* `choice.py` – Python code that calculates the function values and displays the graph.
+* `README.md` – Project description.
 
-1. Օգտագործվում է `sympy`՝ ֆունկցիայի առաջին արտահայտական արտադերդիվը (derivative) հաշվելու համար։  
-2. Հաշվում է ֆունկցիայի արժեքները նշված միջակայքում (`a`-ից `b`) որոշված քայլով (`e`)։  
-3. Ստացվում են x և f(x) արժեքների ցանկեր (`x_list`, `y_list`)։  
-4. Գրաֆիկը ստեղծվում է `matplotlib` գրադարանի միջոցով՝ ցույց տալու ֆունկցիայի փոփոխությունը միջակայքում։
+## Code Description
 
+The program performs the following steps:
 
+1. Uses the `sympy` library to compute the **first derivative** of the function.
+2. Calculates the function values in the interval from `a` to `b` with step `e`.
+3. Stores the results in lists (`x_list`, `y_list`).
+4. Uses the `matplotlib` library to plot the function graph.
 
-# Lab 2: Segment Halving Method
+---
 
-Այս ռեպոզիտորիան պարունակում է լաբորատոր աշխատանքը «Հատվածի կիսում» թեմայով։
+# Segment Halving Method
 
-## Տեսական Նյութ
+## Theoretical Background
 
-**Հատվածի կիսման մեթոդը (Midpoint Method / Segment Halving)** օգտագործվում է ֆունկցիաների համար այնպիսի կետ գտնելու համար, որտեղ ֆունկցիան ունենում է առավելագույն կամ նվազագույն արժեքներ (min/max):  
+The **Segment Halving Method** (also known as the **Midpoint Method**) is a numerical optimization technique used to find the **minimum or maximum value of a function**.
 
-- Հիմնական գաղափարը՝ վերցնել միջակայք `[a, b]` և կիսել այն կետերով, ստուգել առաջին արտադերդիվի նշանները և մոտեցնել այն կետին, որտեղ ֆունկցիան իրակապես նվազագույն կամ առավելագույն ունի։  
-- Կրկնել այս գործընթացը, մինչև միջակայքը փոքրանա մինչև անհրաժեշտ ճշգրտությունը։
+* The method starts with an interval `[a, b]`.
+* The interval is divided into smaller parts.
+* The function values or derivative signs are analyzed to determine which part of the interval contains the optimum.
+* The interval is repeatedly reduced until the required **precision** is reached.
 
-## Ֆայլերը
+## Files
 
-- `midpoint.py` – Python կոդը, որը իրականացնում է հատվածի կիսման մեթոդը։  
-- `README.md` – նախագծի նկարագրությունը։
+* `midpoint.py` – Python implementation of the Segment Halving Method.
+* `README.md` – Project description.
 
-## Ինչպես գործարկել
+---
 
-1. Պահել `midpoint.py` ֆայլը։  
-2. Տեղադրել անհրաժեշտ գրադարանները՝
-   ```bash
-   pip install sympy
+# Golden Section Method
+
+## Theoretical Background
+
+The **Golden Section Method** is a numerical optimization algorithm used to find the **minimum or maximum of a unimodal function** in a given interval.
+
+* The method is based on the **golden ratio**, which allows the interval to shrink efficiently.
+* Two internal points are chosen inside the interval.
+* The function values at these points are compared.
+* Part of the interval that cannot contain the optimum is removed.
+* The process continues until the interval becomes sufficiently small.
+
+The golden ratio is defined as:
+
+[
+\varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618
+]
+
+Using this ratio reduces the number of function evaluations and makes the method efficient.
+
+## Files
+
+* `golden_section.py` – Python implementation of the Golden Section Method.
+* `README.md` – Project description.
+
+---
+
+# How to Run the Code
+
+1. Download or clone the repository.
+2. Install the required libraries:
+
+```bash
+pip install sympy
+pip install matplotlib
+```
+
+3. Run the desired Python file, for example:
+
+```bash
+python choice.py
+```
+
